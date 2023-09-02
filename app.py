@@ -3,12 +3,12 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
-
+from os
 
 load_dotenv()
-app = Flask(__name__,template_folder='templates')
 def create_app():
-    client = MongoClient("MONGODB_URI")
+    app = Flask(__name__,template_folder='templates')
+    client = MongoClient(os.getenv("MONGODB_URI"))
     app.db = client.my_database
 
     @app.route("/", methods=["GET", "POST"])
