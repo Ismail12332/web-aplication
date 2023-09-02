@@ -6,9 +6,8 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-
+app = Flask(__name__,template_folder='templates')
 def create_app():
-    app = Flask(__name__,template_folder='templates')
     client = MongoClient("MONGODB_URI")
     app.db = client.my_database
 
